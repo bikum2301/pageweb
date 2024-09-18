@@ -85,7 +85,7 @@ body {
 <body>
 	<form action="/page/login" method="post">
 		<c:if test="${alert !=null}">
-			<h3 class="alert alert danger">${alert}</h3>
+			<h3 class="alert alert-danger">${alert}</h3>
 		</c:if>
 
 		<div class="container">
@@ -103,6 +103,14 @@ body {
 		<div class="container" style="background-color: #f1f1f1">
 			<button type="button" class="cancelbtn">Cancel</button>
 			<span class="psw">Forgot <a href="#">password?</a></span>
+		</div>
+		<div class="container"
+			style="background-color: #f1f1f1; text-align: center;">
+			<p>
+				Chưa có tài khoản?
+				<button type="button"
+					onclick="window.location.href='/page/register'">Đăng ký</button>
+			</p>
 		</div>
 	</form>
 </body>

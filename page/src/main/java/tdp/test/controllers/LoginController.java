@@ -29,13 +29,11 @@ public class LoginController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		
-		
+
 		String username = req.getParameter("uname");
 		String password = req.getParameter("psw");
 		String remember = req.getParameter("remember");
-		
-		
+
 		boolean isRememberMe = false;
 		if ("on".equals(remember)) {
 			isRememberMe = true;
@@ -47,7 +45,7 @@ public class LoginController extends HttpServlet {
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
-		
+
 		UserModel user = service.login(username, password);
 		if (user != null) {
 			HttpSession session = req.getSession(true);

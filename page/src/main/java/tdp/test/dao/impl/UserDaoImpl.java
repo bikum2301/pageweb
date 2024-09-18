@@ -92,13 +92,84 @@ public class UserDaoImpl extends DBConnetcMySQL implements IUSerDao {
 
 	@Override
 	public void insert(UserModel user) {
+		String sql = "INSERT INTO pageuser(username, password, fullname, email, phone, avartar, roleid, date) VALUES (?,?,?,?,?,?,?,?)";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getPassword());
+			ps.setString(3, user.getFullname());
+			ps.setString(5, user.getEmail());
+			ps.setString(6, user.getPhone());
+			ps.setString(4, user.getAvartar());
+			ps.setInt(7, user.getRoleid());
+			ps.setDate(8, user.getCreatDate());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	@Override
+	public boolean checkExistEmail(String email) {
+		boolean duplicate = false;
+		String query = "select * from pageuser where email = ?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+		}
+		return duplicate;
+	}
+
+	@Override
+	public boolean checkExistUsername(String username) {
+		boolean duplicate = false;
+		String query = "select * from pageuser where username = ?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+		}
+		return duplicate;
+	}
+
+	@Override
+	public boolean checkExistPhone(String phone) {
+		boolean duplicate = false;
+		String query = "select * from pageuser where phone = ?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, phone);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+		}
+		return duplicate;
 	}
 
 	public static void main(String[] args) {
 		try {
 			IUSerDao userDao = new UserDaoImpl();
-			System.out.println(userDao.findAll());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
