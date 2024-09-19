@@ -167,11 +167,31 @@ public class UserDaoImpl extends DBConnetcMySQL implements IUSerDao {
 		return duplicate;
 	}
 
-	public static void main(String[] args) {
+	@Override
+	public void changePass(String password, String email) {
+		String sql = "UPDATE pageuser SET password = ? WHERE email = ?";
 		try {
-			IUSerDao userDao = new UserDaoImpl();
-		} catch (Exception e) {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, password);
+			ps.setString(2, email);
+			ps.executeUpdate();
+		}
+		catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	public static void main(String[] args) {
+//		try {
+//            IUSerDao userdao = new UserDaoImpl();
+//            String newPassword = "anhemtot";
+//            String userEmail = "chaomoinguoi@gmail.com";
+//
+//            userdao.changePass(newPassword, userEmail);
+//            System.out.println("Password updated successfully.");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 	}
 }

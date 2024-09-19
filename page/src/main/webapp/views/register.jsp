@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Register</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -108,7 +108,7 @@ a {
 
 		<div class="container signin">
 			<p>
-				Already have an account? <a href="#">Sign in</a>.
+				Already have an account? <a href="/page/login">Sign in</a>.
 			</p>
 		</div>
 	</form>

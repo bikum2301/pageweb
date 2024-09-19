@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -102,7 +102,7 @@ body {
 
 		<div class="container" style="background-color: #f1f1f1">
 			<button type="button" class="cancelbtn">Cancel</button>
-			<span class="psw">Forgot <a href="#">password?</a></span>
+			<span class="psw">Forgot <a href="/page/forget">password?</a></span>
 		</div>
 		<div class="container"
 			style="background-color: #f1f1f1; text-align: center;">

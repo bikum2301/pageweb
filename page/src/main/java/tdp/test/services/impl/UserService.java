@@ -53,4 +53,13 @@ public class UserService implements IUserService {
 		return userdao.checkExistPhone(phone);
 	}
 
+	@Override
+	public boolean changePass(String password, String email) {
+		if (!userdao.checkExistEmail(email)) {
+			return false;
+		}
+		userdao.changePass(password, email);
+		return true;
+	}
+
 }
