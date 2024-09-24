@@ -45,7 +45,7 @@ body {
 	<div class="header">
 		<div class="user-box">USER</div>
 		<form action="/page/logout"
-			method="post">
+			method="get">
 			<button type="submit" class="logout-button">Logout</button>
 		</form>
 	</div>
