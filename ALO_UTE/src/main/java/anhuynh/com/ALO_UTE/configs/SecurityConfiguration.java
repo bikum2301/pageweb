@@ -2,11 +2,14 @@ package anhuynh.com.ALO_UTE.configs;
 
 import java.util.List;
 
+
+import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -31,16 +34,20 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/login/**").permitAll()
-                .requestMatchers("/profile/**").authenticated() // Đảm bảo rằng người dùng phải đăng nhập để truy cập trang chỉnh sửa hồ sơ
-                .requestMatchers(new AntPathRequestMatcher("/images/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/js/**")).permitAll()
-                .anyRequest().authenticated())
-            .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authenticationProvider(authenticationProvider)
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .build();
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
+                        .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll() //them dong nay
+                        .requestMatchers("/profile/**").authenticated() // Đảm bảo rằng người dùng phải đăng nhập để truy cập trang chỉnh sửa hồ sơ
+                        .requestMatchers(new AntPathRequestMatcher("static/**")).permitAll()
+                        .anyRequest().authenticated())
+                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin(form -> form.loginPage("/login").permitAll())
+                .build();
+    }
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers("/resources/**", "/static/**");
     }
 
     @Bean
