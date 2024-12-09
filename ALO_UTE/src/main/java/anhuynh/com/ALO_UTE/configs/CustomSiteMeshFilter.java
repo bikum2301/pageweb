@@ -14,7 +14,8 @@ public class CustomSiteMeshFilter extends ConfigurableSiteMeshFilter
     {
         // Assigning default decorator if no path specific decorator found
         builder.addDecoratorPath("/login", "web/login.jsp")
-                .addDecoratorPath("/register", "web/register.jsp");
+                .addDecoratorPath("/register", "web/register.jsp")
+                .addDecoratorPath("/home","web/home.jsp");
 
     }
 

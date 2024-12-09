@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 
 <form class="we-form" method="post" action="${pageContext.request.contextPath}/auth/login">
-    <input type="text" placeholder="Email">
-    <input type="password" placeholder="Mật khẩu">
+    <input type="text" placeholder="Email" name="email">
+    <input type="password" placeholder="Mật khẩu" name="password">
     <input type="checkbox"><label>Nhớ tôi</label>
     <button type="submit" data-ripple="">Đăng nhập</button>
     <a class="forgot underline" href="#" title="">Quên mật khẩu?</a><br>

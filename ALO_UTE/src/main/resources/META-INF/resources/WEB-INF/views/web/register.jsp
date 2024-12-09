@@ -4,10 +4,10 @@
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 
 
-<form class="we-form" method="post">
-    <input type="text" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <input type="text" placeholder="examole@gmail.com">
+<form class="we-form" method="post" action="${pageContext.request.contextPath}/auth/signup">
+    <input type="text" placeholder="Email" name="email">
+    <input type="password" placeholder="Password" name="password">
+    <input type="text" placeholder="Full name" name="fullname">
     <input type="checkbox"><label>Gửi mã xác nhận về gmail</label>
     <button type="submit" data-ripple="">Đăng kí</button>
     <a class="forgot underline" href="#" title="">Quên mật khẩu</a>

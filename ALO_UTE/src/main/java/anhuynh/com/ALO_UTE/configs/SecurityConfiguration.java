@@ -3,6 +3,7 @@ package anhuynh.com.ALO_UTE.configs;
 import java.util.List;
 
 
+import anhuynh.com.ALO_UTE.controllers.AuthenticationSuccessHandler;
 import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,7 +43,9 @@ public class SecurityConfiguration {
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form -> form.loginPage("/login").permitAll())
+                .formLogin(httpSecurityFormLoginConfigurer ->
+                        httpSecurityFormLoginConfigurer.loginPage("/login")
+                                .successHandler(new AuthenticationSuccessHandler()).permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/login"))
                 .build();
     }

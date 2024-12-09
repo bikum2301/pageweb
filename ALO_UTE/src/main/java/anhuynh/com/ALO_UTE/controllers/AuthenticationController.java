@@ -1,10 +1,10 @@
 package anhuynh.com.ALO_UTE.controllers;
 
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import anhuynh.com.ALO_UTE.entity.User;
 import anhuynh.com.ALO_UTE.models.LoginResponse;
@@ -14,6 +14,9 @@ import anhuynh.com.ALO_UTE.services.AuthenticationService;
 import anhuynh.com.ALO_UTE.services.JwtService;
 import jakarta.transaction.Transactional;
 
+import java.io.IOException;
+
+@Slf4j
 @RequestMapping("/auth")
 @RestController
 public class AuthenticationController {
@@ -27,19 +30,30 @@ public class AuthenticationController {
 
 	@PostMapping("/signup")
 	@Transactional
-	public ResponseEntity<User> register(@RequestBody RegisterUserModel registerUser) {
+	public ResponseEntity<User> register(@RequestParam String email,
+										 @RequestParam String password,
+										 @RequestParam String fullname) {
+		RegisterUserModel registerUser = new RegisterUserModel();
+		registerUser.setEmail(email);
+		registerUser.setPassword(password);
+		registerUser.setFullName(fullname);
 		User registeredUser = authenticationService.signup(registerUser);
-		return ResponseEntity.ok(registeredUser);
+		return ResponseEntity.status(HttpStatus.FOUND)
+				.header("Location", "/login")
+				.build();
 	}
 
 	@PostMapping("/login")
 	@Transactional
-	public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserModel loginUser) {
+	public void authenticate(@RequestParam String email,
+													  @RequestParam String password) {
+		LoginUserModel loginUser = new LoginUserModel();
+		loginUser.setPassword(password);
+		loginUser.setEmail(email);
 		User authenticatedUser = authenticationService.authenticate(loginUser);
 		String jwtToken = jwtService.generateToken(authenticatedUser);
 		LoginResponse loginResponse = new LoginResponse();
 		loginResponse.setToken(jwtToken);
 		loginResponse.setExpiresIn(jwtService.getExpirationTime());
-		return ResponseEntity.ok(loginResponse);
 	}
 }
