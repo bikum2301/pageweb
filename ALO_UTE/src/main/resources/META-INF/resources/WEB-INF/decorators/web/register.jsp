@@ -40,16 +40,9 @@
                                     <i class="fa fa-key"></i>Đăng ký
                                     <span>Đăng kí ngay để trở thành người đẹp trai xinh gái bạn nhé.</span>
                                 </div>
-                                <form class="we-form" method="post">
-                                    <input type="text" placeholder="Email">
-                                    <input type="password" placeholder="Password">
-                                    <input type="text" placeholder="examole@gmail.com">
-                                    <input type="checkbox"><label>Gửi mã xác nhận về gmail</label>
-                                    <button type="submit" data-ripple="">Đăng kí</button>
-                                    <a class="forgot underline" href="#" title="">Quên mật khẩu</a>
-                                </form>
+                                    <sitemesh:write property="body" />
         
-                                <span>Bạn đã có tài khoản ? <a class="we-account underline" href="#" title="">Đăng Nhập</a></span>
+                                <span>Bạn đã có tài khoản ? <a class="we-account underline" href="/login" title="">Đăng Nhập</a></span>
                             </div>
                         </div>
                         
