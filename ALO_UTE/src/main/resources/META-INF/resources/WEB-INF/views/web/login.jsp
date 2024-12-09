@@ -8,5 +8,6 @@
     <input type="password" placeholder="Mật khẩu">
     <input type="checkbox"><label>Nhớ tôi</label>
     <button type="submit" data-ripple="">Đăng nhập</button>
-    <a class="forgot underline" href="#" title="">Quên mật khẩu?</a>
+    <a class="forgot underline" href="#" title="">Quên mật khẩu?</a><br>
+    <a class="forgot underline" href="/register" title="">Đăng ký</a>
 </form>

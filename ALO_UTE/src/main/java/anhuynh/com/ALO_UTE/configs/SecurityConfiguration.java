@@ -36,13 +36,14 @@ public class SecurityConfiguration {
         return httpSecurity.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll() //them dong nay
+                        .requestMatchers("/register").permitAll()
                         .requestMatchers("/profile/**").authenticated() // Đảm bảo rằng người dùng phải đăng nhập để truy cập trang chỉnh sửa hồ sơ
-                        .requestMatchers(new AntPathRequestMatcher("static/**")).permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin(form -> form.loginPage("/login").permitAll())
+                .logout(logout -> logout.logoutSuccessUrl("/login"))
                 .build();
     }
     @Bean
