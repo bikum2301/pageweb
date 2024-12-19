@@ -1,90 +1,22 @@
 # Mạng xã hội Aloute
 
-
-
-## Thư mực
-
-- [Tổng quan project](#Tổng quan project)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Support](#support)
-- [License](#license)
-
 ## Tổng quan project
 
-Social Network App is a simple yet powerful application designed to connect people and facilitate communication. It leverages Java, Spring Boot, MySQL, Thymeleaf and Bootstrap to provide users with a platform to share their thoughts and ideas with others. My aim is to create a welcoming and inclusive community where users can interact and engage with each other.
+Mạng xã hội Aloute được làm dựa trên Spring Boot, JPA, MySql, JSP/JSTL, Bootstrap
 
-## Features
+## Tính năng
 
-- **User registration and login:** Users can create an account and log in to access the app's features.
-- **Posting text-based content:** Users can create posts to share their thoughts and ideas with others.
-- **Viewing a feed of posts:** Users can view a feed of posts from users they follow.
-- **Following/unfollowing other users:** Users can follow or unfollow other users to customize their feed.
-- **Liking posts:** Users can like posts to show their appreciation for the content.
+- **Đăng nhập và đăng ký:** Người dùng có thể đăng nhập và đăng ký vào mạng xã hội.
+- **Đăng bài:** Người dùng có thể đăng bài để thể hiện tâm trạng.
+- **Xem bài đăng và trang của người mà họ theo dõi:** Người dùng có thể xem bài đăng và trang của người mà họ theo dõi.
+- **Theo dõi và hủy theo dõi:** Người dùng có thể theo dõi hoặc hủy theo dõi những người dùng khác.
+- **Tương tác với các bài đăng:** Người dùng có thể like các bài đăng của chính mình hoặc của người dùng khác.
 
-## Installation
+## Yêu cầu:
 
-To set up the project on your local machine, please follow these steps:
+Spring Boot 3 và JDK 17 
 
-1. Clone this repository to your local machine.
+## Các khỏi tạo
 
-```bash
-git clone https://github.com/erickgnclvs/socialnetwork.git
-```
-
-2. Install MySQL on your computer.
-3. Open the cloned repository in your preferred IDE or text editor.
-4. Create a new MySQL database for the app.
-5. Update the `application.properties` file with your database connection information.
-6. Run the app using the `./mvnw spring-boot:run` command.
-
-Congratulations! The project is now installed and running on your local machine.
-
-## Usage
-
-Here are some instructions on how to use the Social Network App:
-
-1. Access the app through the provided URL or by visiting http://localhost:8080 in your web browser.
-2. Create an account by clicking on the "Register" button and filling out the registration form.
-3. Log in to your account by clicking on the "Login" button and entering your credentials.
-4. Explore the different sections of the app, such as creating posts, viewing your feed, following/unfollowing other users, and liking posts.
-
-For more detailed instructions, please refer to our User Guide.
-
-## Contributing
-
-We appreciate contributions from the community to enhance our project. To contribute, please follow these guidelines:
-
-1. Fork this repository to your GitHub account.
-2. Create a new branch for your feature or bug fix:
-
-```bash
-git checkout -b feature/your-feature
-```
-
-3. Make your changes and ensure they are properly tested.
-4. Commit your changes with descriptive commit messages:
-
-```bash
-git commit -m "Add your commit message here"
-```
-
-5. Push your branch to your forked repository:
-
-```bash
-git push origin feature/your-feature
-```
-
-6. Open a pull request in this repository, describing the changes you made and why they should be merged.
-
-Thank you for contributing to our project!
-
-## Support
-
-If you encounter any issues or have any questions or suggestions regarding our project, please feel free to reach out. You can contact me through [my e-mail](mailto:erickgoncalves5@hotmail.com) or by opening an issue in this repository.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE.md).
+1. Tạo database trong MySQL có tên: aloute và đặt username, password phù hợp
+2. Truy cập vào trang localhost:8081 để tiến hành trải nghiệm các chức 
