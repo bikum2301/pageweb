@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+<body>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="login-register-card col-md-6">
+            <h1 class="text-center">Social Network</h1>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <form method="POST" action="/login">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                        </div>
+                        <div id="warning-message" class="alert alert-danger" role="alert" style="display: none"></div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary mr-2">Login</button>
+                            <a href="/register" class="btn btn-primary">Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var registrationFailed = ${registrationFailed != null ? registrationFailed : 'false'};
+    var error = "${error != null ? error : ''}";
+</script>
