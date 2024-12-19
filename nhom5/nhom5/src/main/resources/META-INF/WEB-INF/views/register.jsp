@@ -6,7 +6,7 @@
     <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="login-register-card col-md-6">
-                <h1 class="text-center">Social Network</h1>
+                <h1 class="text-center">ALOUTE</h1>
                 <div class="card mt-3">
                     <div class="card-body">
                         <form:form method="POST" action="/register" modelAttribute="user">
